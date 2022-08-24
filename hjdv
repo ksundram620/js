@@ -1,0 +1,57 @@
+function showmovie(){
+    let movie=localStorage.getItem("movie");
+    if(movie==null){
+        movieObj=[];
+    }
+    else{
+        movieObj= JSON.parse(movie);
+    }
+    let html="";
+    movieObj.forEach(function(element,index){
+        html +=``
+    });
+}
+
+
+
+
+
+
+
+
+
+let mainobj = document.getElementById("tabledata");
+ 
+if (titledata != "" && imagedata != "" && ratingdata != "") {
+  let element = document.createElement("tr");
+  let trid = getRandom();
+  element.id = trid;
+  let title = document.createElement("td");
+  let imagetd = document.createElement("td");
+  let image = document.createElement("img");
+  image.src = imagedata;
+  imagetd.appendChild(image);
+  let rating = document.createElement("td");
+  let update = document.createElement("td");
+
+  title.innerHTML = titledata;
+
+  let counterid = parseInt(getRandom());
+
+  rating.innerHTML = `<button onclick="increment(this.value)" value="${counterid}">👍</button>
+                      <span id="${counterid}">${ratingdata}</span><button onclick="decrement(this.value)" value="${counterid}">👎</button>`;
+
+  update.innerHTML = `<button onclick="deleteElement(this.value)" value="${trid}"> X </button>`;
+  //*******************append the element**********************/
+  element.appendChild(imagetd);
+  element.appendChild(title);
+  element.appendChild(rating);
+  element.appendChild(update);
+  mainobj.appendChild(element);
+  document.getElementById("formtab").style.display = "none";
+  document.getElementById("title").value = "";
+  document.getElementById("image").value = "";
+  document.getElementById("rating").value = "";
+} else {
+  alert("OOPS! Please fill in all the fields.");
+}
